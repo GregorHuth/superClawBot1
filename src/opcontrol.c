@@ -28,36 +28,29 @@
  */
 
  #include "main.h"
- void myFunction(){
-     // ... Do work
-     // Get encoder reading in degrees
-     int counts = encoderGet(encoder);
 
-     // ... Do other work
-     // Reset encoder to zero
-     encoderReset(encoder);
- }
 
 
  void operatorControl() {
+   Encoder encoder;
    int power, turn;
-   int pot = 0;
+   encoder = encoderInit(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, true);
+   int counts = encoderGet(encoder);
    while (1) {
       power = joystickGetAnalog(1, 1); // vertical axis on left joystick
       turn = joystickGetAnalog(1, 2); // horizontal axis on left joystick
-
+      counts = encoderGet(encoder);
      chassisSet(-0.5*(power + turn), -0.5*(power - turn));
 
      // add the following line:
      clawSet(joystickGetAnalog(1, 4));
      openSet(joystickGetAnalog(1, 3));
      if (digitalRead(LIMIT_SWITCH) == LOW){
-       while(digitalRead(LIMIT_SWITCH) == LOW){
        printf("low\n");
        delay(200);
+
      }
-     }
-     else{
+
      if(joystickGetDigital(1, 6, JOY_UP)) {
      shoulderSet(127); // pressing up, so lift should go up
    }
@@ -67,8 +60,9 @@
    else {
      shoulderSet(0); // no buttons are pressed, stop the lift
    }
-   printf("high");
- }
+
+
+
    if(joystickGetDigital(1, 5, JOY_UP)) {
      elbowSet(127); // pressing up, so lift should go up
    }
@@ -78,12 +72,11 @@
    else {
      elbowSet(0); // no buttons are pressed, stop the lift
    }
-     delay(20);
 
 
 
-  /// pot = analogRead(4);
-  //  printf("the pot value %d \n", pot);
-  //  delay(200);
+    printf("high\n");
+    printf("the count value %d \n", counts);
+    delay(200);
   }
  }

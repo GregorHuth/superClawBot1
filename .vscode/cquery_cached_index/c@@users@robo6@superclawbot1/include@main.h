@@ -33,11 +33,10 @@
 #include "open.h"
 #define LIMIT_SWITCH 3
 // Digital port number for top and bottom port of quad encoder
-#define QUAD_TOP_PORT 1
-#define QUAD_BOTTOM_PORT 2
+#define QUAD_TOP_PORT 9
+#define QUAD_BOTTOM_PORT 8
 
 // Multiple encoders can be declared
-Encoder encoder;
 
 // Allow usage of this file in C++ programs
 #ifdef __cplusplus
