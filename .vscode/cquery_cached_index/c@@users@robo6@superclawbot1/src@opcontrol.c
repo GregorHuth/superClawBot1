@@ -28,26 +28,34 @@
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
  void operatorControl() {
+   int power, turn;
    homeElbow();
    Encoder encoder2;
    encoder2 = encoderInit(QUAD_TOP_PORT2, QUAD_BOTTOM_PORT2, true);
    int counts2 = encoderGet(encoder2);
-   while (counts2>100){
+   while (counts2<200){
+     counts2 = encoderGet(encoder2);
      elbowSet(40);
+   }
+   delay(300);
+   counts2 = encoderGet(encoder2);
+   while(counts2>200){
+      elbowSet(-40);
+      counts2 = encoderGet(encoder2);
    }
    homeShoulder();
    Encoder encoder;
-   int power, turn;
    encoder = encoderInit(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, true);
    int counts = encoderGet(encoder);
-   //while (counts>100){
-     //shoulderSet(40);
-   //}
+   while (counts<100){
+     shoulderSet(-40);
+   }
 
    while (1) {
       power = joystickGetAnalog(1, 1); // vertical axis on left joystick
       turn = joystickGetAnalog(1, 2); // horizontal axis on left joystick
       counts = encoderGet(encoder);
+      counts2 = encoderGet(encoder2);
 
      chassisSet(-0.5*(power + turn), -0.5*(power - turn));
 

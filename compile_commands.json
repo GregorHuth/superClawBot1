@@ -210,11 +210,11 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "C:/Users/robo6/AppData/Local/Temp/tmp10eaf7ea/opcontrol.c.o",
-            "src\\opcontrol.c"
+            "C:/Users/robo6/AppData/Local/Temp/tmp10eaf7ea/claw.c.o",
+            "src\\claw.c"
         ],
         "directory": "C:\\Users\\robo6\\superClawBot1",
-        "file": "src\\opcontrol.c"
+        "file": "src\\claw.c"
     },
     {
         "arguments": [
@@ -241,10 +241,10 @@
             "-fdiagnostics-color",
             "-std=gnu99",
             "-o",
-            "C:/Users/robo6/AppData/Local/Temp/tmp10eaf7ea/claw.c.o",
-            "src\\claw.c"
+            "bin/opcontrol.c.o",
+            "src\\opcontrol.c"
         ],
         "directory": "C:\\Users\\robo6\\superClawBot1",
-        "file": "src\\claw.c"
+        "file": "src\\opcontrol.c"
     }
 ]
