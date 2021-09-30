@@ -31,10 +31,14 @@
 #include "elbow.h"
 #include "shoulder.h"
 #include "open.h"
-#define LIMIT_SWITCH 3
+#define LIMIT_SWITCH 5
+#define LIMIT_SWITCH2 3
+
 // Digital port number for top and bottom port of quad encoder
 #define QUAD_TOP_PORT 9
 #define QUAD_BOTTOM_PORT 8
+#define QUAD_BOTTOM_PORT2 7
+#define QUAD_TOP_PORT2 6
 
 // Multiple encoders can be declared
 
