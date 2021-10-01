@@ -29,27 +29,26 @@
  */
  void operatorControl() {
    int power, turn;
-   homeElbow();
-   Encoder encoder2;
-   encoder2 = encoderInit(QUAD_TOP_PORT2, QUAD_BOTTOM_PORT2, true);
-   int counts2 = encoderGet(encoder2);
-   while (counts2<200){
-     counts2 = encoderGet(encoder2);
-     elbowSet(40);
-   }
-   delay(300);
-   counts2 = encoderGet(encoder2);
-   while(counts2>200){
-      elbowSet(-40);
-      counts2 = encoderGet(encoder2);
-   }
    homeShoulder();
    Encoder encoder;
    encoder = encoderInit(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, true);
    int counts = encoderGet(encoder);
-   while (counts<100){
+   homeElbow();
+   Encoder encoder2;
+   encoder2 = encoderInit(QUAD_TOP_PORT2, QUAD_BOTTOM_PORT2, true);
+   int counts2 = encoderGet(encoder2);
+   counts=0;
+   while(counts<50){
      shoulderSet(-40);
+     counts = encoderGet(encoder);
    }
+   counts2=0;
+   while(counts2<50){
+     elbowSet(40);
+     counts2 = encoderGet(encoder2);
+   }
+
+
 
    while (1) {
       power = joystickGetAnalog(1, 1); // vertical axis on left joystick
