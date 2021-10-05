@@ -37,18 +37,19 @@
    Encoder encoder2;
    encoder2 = encoderInit(QUAD_TOP_PORT2, QUAD_BOTTOM_PORT2, true);
    int counts2 = encoderGet(encoder2);
-   counts=0;
-   while(counts<50){
+   encoderReset(encoder);
+   while(counts<55){
      shoulderSet(-40);
      counts = encoderGet(encoder);
    }
-   counts2=0;
-   while(counts2<50){
+   encoderReset(encoder2);
+   while(counts2<185){
      elbowSet(40);
      counts2 = encoderGet(encoder2);
    }
-
-
+   delay(2000000000);
+   encoderReset(encoder);
+   encoderReset(encoder2);
 
    while (1) {
       power = joystickGetAnalog(1, 1); // vertical axis on left joystick
@@ -56,7 +57,7 @@
       counts = encoderGet(encoder);
       counts2 = encoderGet(encoder2);
 
-     chassisSet(-0.5*(power + turn), -0.5*(power - turn));
+     chassisSet(0.5*(power + turn), 0.5*(power - turn));
 
 
      // add the following line:}
