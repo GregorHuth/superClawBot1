@@ -43,11 +43,11 @@
      counts = encoderGet(encoder);
    }
    encoderReset(encoder2);
-   while(counts2<185){
+   while(counts2<200){
      elbowSet(40);
      counts2 = encoderGet(encoder2);
    }
-   delay(2000000000);
+   delay(20);
    encoderReset(encoder);
    encoderReset(encoder2);
 
