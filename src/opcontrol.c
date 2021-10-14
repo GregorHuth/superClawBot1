@@ -6,7 +6,6 @@
  * PROS contains FreeRTOS (http://www.freertos.org) whose source code may be
  * obtained from http://sourceforge.net/projects/freertos/files/ or on request.
  */
-
 #include "main.h"
 #include"homeShoulder.h"
 #include"homeElbow.h"
@@ -63,12 +62,11 @@
 
    if(joystickGetDigital(1, 7, JOY_UP)){
      homeShoulder();
-
      homeElbow();
-
      encoderReset(encoder);
      encoderReset(encoder2);
-     while(counts<65){
+
+     while(counts<85){
        shoulderSet(-40);
        counts = encoderGet(encoder);
        delay(20);
@@ -76,13 +74,14 @@
      }
      shoulderSet(0);
      encoderReset(encoder2);
-     while(counts2<120 ){
+     while(counts2<160 ){
        elbowSet(40);
        counts2 = encoderGet(encoder2);
        delay(20);
        printf("moving to home position elbow %d \n", counts2);
      }
      elbowSet(0);
+     delay(20);
      encoderReset(encoder);
      encoderReset(encoder2);
 
@@ -91,11 +90,17 @@
 
 
    }
+
    delay(20);
+   counts = encoderGet(encoder);
+   counts2 = encoderGet(encoder2);
    printf("shoulder current %d \n", counts);
    printf("elbow current %d \n", counts2);
 
-
+   if(joystickGetDigital(1, 7, JOY_DOWN)){
+     homeShoulder();
+     homeElbow();
+  }
     printf("high\n");
   //  printf("the count value shoulder %d \n", counts);
   //  printf("the count value elbow %d \n", counts2);
